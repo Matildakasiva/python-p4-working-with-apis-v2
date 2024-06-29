@@ -20,17 +20,17 @@ class Search:
         return response.content
 
     def get_search_results_json(self):
-        search_term = "the lord of the rings"
+       search_term = "the lord of the rings"
 
-        search_term_formatted = search_term.replace(" ", "+")
-        fields = ["title", "author_name"]
-        fields_formatted = ",".join(fields)
-        limit = 1
+       search_term_formatted = search_term.replace(" ", "+")
+       fields = ["title", "author_name"]
+       fields_formatted = ",".join(fields)
+       limit = 1
 
-        URL = f"https://openlibrary.org/search.json?title={search_term_formatted}&fields={fields_formatted}&limit={limit}"
-        print(URL)
-        response = requests.get(URL)
-        return response.json()
+       URL = f"https://openlibrary.org/search.json?title={search_term_formatted}&fields={fields_formatted}&limit={limit}"
+       print(URL)
+       response = requests.get(URL)
+       return response.json()
 
     def get_user_search_results(self, search_term):
         search_term_formatted = search_term.replace(" ", "+")
@@ -48,8 +48,9 @@ class Search:
 # results = Search().get_search_results()
 # print(results)
 
-# results_json = Search().get_search_results_json()
-# print(json.dumps(results_json, indent=1))
+results_json = Search().get_search_results_json()
+# json.dumps formats the JSON object in a human readable format
+print(json.dumps(results_json, indent=1))
 
 search_term = input("Enter a book title: ")
 result = Search().get_user_search_results(search_term)
